@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "item": "buddycards:buddysteel_nugget"
+    },
+    {
+      "item": "buddycards:buddysteel_nugget"
+    },
+    {
+      "item": "buddycards:buddysteel_nugget"
+    }
+  ],
+  "result": {
+    "id": "delightfulbuddycards:buddybeans",
+    "count": 1
+  }
+}

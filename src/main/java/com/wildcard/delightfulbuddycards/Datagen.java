@@ -3,16 +3,18 @@ package com.wildcard.delightfulbuddycards;
 import com.wildcard.buddycards.Buddycards;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.ModelProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.ModelProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-@Mod.EventBusSubscriber(modid = DelightfulBuddycards.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod(value = DelightfulBuddycards.MOD_ID)
+@EventBusSubscriber(modid = DelightfulBuddycards.MOD_ID)
 public class Datagen {
     @SubscribeEvent
     static void onGatherData(GatherDataEvent event) {
@@ -29,27 +31,36 @@ public class Datagen {
             for (int i = 1; i <= 18; i++) {
                 genCardModel(i);
             }
+            ItemModelBuilder medal = getBuilder(ModelProvider.ITEM_FOLDER + "/buddysteel_medal_delightful")
+                    .parent(factory.apply(ResourceLocation.withDefaultNamespace("item/generated")))
+                    .texture("layer0", ResourceLocation.fromNamespaceAndPath(DelightfulBuddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/delightful" + "_set/" + "medal"));
+            for (int i = 1; i < 5; i++) {
+                ItemModelBuilder tierMedal = getBuilder(ModelProvider.ITEM_FOLDER + "/buddysteel_medal_delightful" + i)
+                        .parent(factory.apply(ResourceLocation.withDefaultNamespace("item/generated")))
+                        .texture("layer0", ResourceLocation.fromNamespaceAndPath(DelightfulBuddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/delightful" + "_set/" + "medal" + i));
+                medal.override().predicate(ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "tier"), i).model(tierMedal);
+            }
         }
 
         void genCardModel(int cardNum) {
             ItemModelBuilder card = getBuilder(ModelProvider.ITEM_FOLDER + "/buddycard_delightful" + cardNum)
-                    .parent(factory.apply(new ResourceLocation(Buddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/buddycard")))
-                    .texture("layer0", new ResourceLocation(DelightfulBuddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/delightful_set/" + cardNum));
+                    .parent(factory.apply(ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/buddycard")))
+                    .texture("layer0", ResourceLocation.fromNamespaceAndPath(DelightfulBuddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/delightful_set/" + cardNum));
             for (int i = 0; i <= 5; i++) {
                 for (int j = 0; j <= 3; j++)
                     if (j + i != 0)
-                        card.override().predicate(new ResourceLocation(Buddycards.MOD_ID, "grade"), i).predicate(new ResourceLocation(Buddycards.MOD_ID, "foil"), j).model(genFoiledGradedCardModel(cardNum, i, j));
+                        card.override().predicate(ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "grade"), i).predicate(ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "foil"), j).model(genFoiledGradedCardModel(cardNum, i, j));
             }
         }
 
         ModelFile genFoiledGradedCardModel(int cardNum, int grade, int foil) {
             ItemModelBuilder card = getBuilder(ModelProvider.ITEM_FOLDER + "/buddycard_delightful" + cardNum + "_g" + grade + "_f" + foil)
-                    .parent(factory.apply(new ResourceLocation(Buddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/buddycard")))
-                    .texture("layer0", new ResourceLocation(DelightfulBuddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/delightful_set/" + cardNum));
+                    .parent(factory.apply(ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/buddycard")))
+                    .texture("layer0", ResourceLocation.fromNamespaceAndPath(DelightfulBuddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/delightful_set/" + cardNum));
             if (foil != 0)
-                card.texture("layer1", new ResourceLocation(Buddycards.MOD_ID,ModelProvider.ITEM_FOLDER + "/foil" + foil));
+                card.texture("layer1", ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID,ModelProvider.ITEM_FOLDER + "/foil" + foil));
             if (grade != 0)
-                card.texture(foil == 0 ? "layer1" : "layer2", new ResourceLocation(Buddycards.MOD_ID,ModelProvider.ITEM_FOLDER + "/grade" + grade));
+                card.texture(foil == 0 ? "layer1" : "layer2", ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID,ModelProvider.ITEM_FOLDER + "/grade" + grade));
             return card;
         }
     }

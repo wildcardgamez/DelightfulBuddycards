@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "delightfulbuddycards:buddybeans"
+    }
+  },
+  "result": {
+    "id": "delightfulbuddycards:buddybean_crate"
+  }
+}

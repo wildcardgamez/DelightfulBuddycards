@@ -1,0 +1,29 @@
+{
+  "type": "buddycards:buddysteel_charging",
+  "input": {
+    "item": "buddycards:blank_buddysteel_medal"
+  },
+  "ingredients": [
+    {
+      "tag": "delightfulbuddycards:buddycards_delightful",
+      "count": 1
+    },
+    {
+      "tag": "delightfulbuddycards:buddycards_delightful",
+      "count": 1
+    },
+    {
+      "tag": "delightfulbuddycards:buddycards_delightful",
+      "count": 1
+    },
+    {
+      "tag": "delightfulbuddycards:buddycards_delightful",
+      "count": 1
+    }
+  ],
+  "output": {
+    "id": "delightfulbuddycards:buddysteel_medal_delightful",
+    "count": 1
+  },
+  "set": "delightful"
+}

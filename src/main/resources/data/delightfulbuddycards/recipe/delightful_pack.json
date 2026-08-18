@@ -1,0 +1,30 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "delightfulbuddycards:diced_buddycards"
+    },
+    {
+      "item": "delightfulbuddycards:diced_buddycards"
+    },
+    {
+      "item": "delightfulbuddycards:diced_buddycards"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "delightfulbuddycards:buddybean_paste"
+    },
+    {
+      "item": "delightfulbuddycards:buddybean_paste"
+    }
+  ],
+  "result": {
+    "id": "delightfulbuddycards:buddycard_pack_delightful"
+  },
+  "container": {
+    "id": "farmersdelight:canvas"
+  },
+  "cookingtime": 400
+}

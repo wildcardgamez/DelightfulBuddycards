@@ -1,0 +1,24 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "delightfulbuddycards:diced_buddybeans"
+    },
+    {
+      "item": "delightfulbuddycards:diced_buddybeans"
+    },
+    {
+      "item": "delightfulbuddycards:diced_buddybeans"
+    },
+    {
+      "item": "delightfulbuddycards:diced_buddybeans"
+    }
+  ],
+  "result": {
+    "id": "delightfulbuddycards:buddybean_paste"
+  },
+  "container": {
+    "id": "minecraft:bowl"
+  },
+  "cookingtime": 200
+}

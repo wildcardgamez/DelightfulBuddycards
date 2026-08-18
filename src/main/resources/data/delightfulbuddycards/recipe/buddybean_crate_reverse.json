@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "delightfulbuddycards:buddybean_crate"
+    }
+  ],
+  "result":
+  {
+    "id": "delightfulbuddycards:buddybeans",
+    "count": 9
+  }
+}

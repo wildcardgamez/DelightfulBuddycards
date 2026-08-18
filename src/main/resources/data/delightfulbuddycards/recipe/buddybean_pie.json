@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "aaa",
+    "xOx"
+  ],
+  "key": {
+    "#": {
+      "item": "delightfulbuddycards:buddygummies"
+    },
+    "a": {
+      "item": "delightfulbuddycards:buddybean_paste"
+    },
+    "x": {
+      "item": "minecraft:sugar"
+    },
+    "O": {
+      "item": "farmersdelight:pie_crust"
+    }
+  },
+  "result": {
+    "id": "delightfulbuddycards:buddybean_pie"
+  }
+}

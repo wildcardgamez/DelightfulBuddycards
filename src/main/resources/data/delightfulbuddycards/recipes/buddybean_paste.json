@@ -1,0 +1,30 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "farmersdelight"
+    }
+  ],
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "delightfulbuddycards:diced_buddybeans"
+    },
+    {
+      "item": "delightfulbuddycards:diced_buddybeans"
+    },
+    {
+      "item": "delightfulbuddycards:diced_buddybeans"
+    },
+    {
+      "item": "delightfulbuddycards:diced_buddybeans"
+    }
+  ],
+  "result": {
+    "item": "delightfulbuddycards:buddybean_paste"
+  },
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "cookingtime": 200
+}

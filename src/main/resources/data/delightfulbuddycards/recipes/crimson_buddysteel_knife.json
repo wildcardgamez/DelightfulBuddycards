@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "buddycards:crimson_buddysteel_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "delightfulbuddycards:charged_buddysteel_knife"
+  },
+  "addition": {
+    "item": "buddycards:crimson_buddysteel_ingot"
+  },
+  "result": {
+    "item": "delightfulbuddycards:crimson_buddysteel_knife"
+  }
+}

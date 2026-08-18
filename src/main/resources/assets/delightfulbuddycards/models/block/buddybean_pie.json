@@ -1,0 +1,9 @@
+{
+  "parent": "farmersdelight:block/template_pie",
+  "textures": {
+    "particle": "delightfulbuddycards:block/buddybean_pie_top",
+    "bottom": "farmersdelight:block/pie_bottom",
+    "side": "farmersdelight:block/pie_side",
+    "top": "delightfulbuddycards:block/buddybean_pie_top"
+  }
+}

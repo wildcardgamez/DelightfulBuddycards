@@ -1,0 +1,60 @@
+package com.wildcard.delightfulbuddycards;
+
+import com.wildcard.buddycards.item.tiered.ICollectionTieredItem;
+import com.wildcard.buddycards.registries.BuddycardsComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.ItemAttributeModifiers;
+import vectorwing.farmersdelight.common.item.KnifeItem;
+
+import java.util.List;
+import java.util.function.Supplier;
+
+public class CollectionTieredKnifeItem extends KnifeItem implements ICollectionTieredItem {
+    public CollectionTieredKnifeItem(Tier[] tiers, Properties properties, ExtraAttributes attributes) {
+        super(tiers[0], properties.component(BuddycardsComponents.COLLECTION_TIER, 0).durability(tiers[0].getUses()));
+        this.tiers = tiers;
+        this.tieredModifiers = new Supplier[4];
+        for (int i = 0; i < 4; i++) {
+            int finalI = i;
+            this.tieredModifiers[i] = () -> {
+                ItemAttributeModifiers.Builder builder = ItemAttributeModifiers.builder();
+                        builder.add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, 0.5f + tiers[finalI].getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                        builder.add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, -2, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND);
+                if (attributes != null)
+                    attributes.applyAttributes(builder, finalI, EquipmentSlotGroup.MAINHAND);
+                return builder.build();
+            };
+        }
+    }
+
+    final Tier[] tiers;
+    private final Supplier<ItemAttributeModifiers>[] tieredModifiers;
+
+    @Override
+    public Component getName(ItemStack stack) {
+        return getCollectionTier(stack) == 3 ? Component.translatable(getDescriptionId() + ".perfect") : super.getName(stack);
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(getCollectionTierComponent(stack));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+
+    @Override
+    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
+        return this.tiers[getCollectionTier(toRepair)].getRepairIngredient().test(repair);
+    }
+
+    @Override
+    public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
+        return tieredModifiers[getCollectionTier(stack)].get();
+    }
+}

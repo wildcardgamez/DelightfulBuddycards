@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:stick"
+    },
+    "#": {
+      "item": "buddycards:buddysteel_ingot"
+    }
+  },
+  "result": {
+    "id": "delightfulbuddycards:buddysteel_knife"
+  }
+}

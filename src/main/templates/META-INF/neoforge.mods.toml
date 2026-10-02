@@ -45,7 +45,7 @@ displayName="${mod_name}" #mandatory
 #authors=""
 
 # The description text for the mod (multi line!) (#mandatory)
-description='''A Create focused Buddycards Expansion'''
+description='''A Farmer's Delight focused Buddycards Expansion'''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
 #[[mixins]]
@@ -87,7 +87,7 @@ side="BOTH"
 [[dependencies.${mod_id}]]
     modId="buddycards"
     mandatory=true
-    versionRange="[1.21.1-5.0.2,)"
+    versionRange="[1.21.1-5.2.0,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.${mod_id}]]

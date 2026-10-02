@@ -1,0 +1,29 @@
+{
+  "type": "buddycards:buddysteel_charging",
+  "ingredients": [
+    {
+      "item": "buddycards:luminis"
+    },
+    {
+      "item": "buddycards:crimson_luminis"
+    },
+    {
+      "item": "buddycards:luminis"
+    },
+    {
+      "item": "buddycards:crimson_luminis"
+    }
+  ],
+  "input": {
+    "item": "delightfulbuddycards:buddysteel_medal_delightful"
+  },
+  "output": {
+    "components": {
+      "buddycards:tier": 1
+    },
+    "count": 1,
+    "id": "delightfulbuddycards:buddysteel_medal_delightful"
+  },
+  "set": "delightful",
+  "tier": 1
+}

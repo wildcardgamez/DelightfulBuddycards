@@ -1,0 +1,29 @@
+{
+  "type": "buddycards:buddysteel_charging",
+  "ingredients": [
+    {
+      "item": "buddycards:crimson_luminis_block"
+    },
+    {
+      "item": "buddycards:void_zylex_block"
+    },
+    {
+      "item": "buddycards:crimson_luminis_block"
+    },
+    {
+      "item": "buddycards:void_zylex_block"
+    }
+  ],
+  "input": {
+    "item": "delightfulbuddycards:buddysteel_medal_delightful"
+  },
+  "output": {
+    "components": {
+      "buddycards:tier": 4
+    },
+    "count": 1,
+    "id": "delightfulbuddycards:buddysteel_medal_delightful"
+  },
+  "set": "delightful",
+  "tier": 4
+}

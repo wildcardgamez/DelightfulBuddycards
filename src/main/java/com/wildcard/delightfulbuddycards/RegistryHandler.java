@@ -3,6 +3,7 @@ package com.wildcard.delightfulbuddycards;
 import com.wildcard.buddycards.Buddycards;
 import com.wildcard.buddycards.block.BuddycardBoosterBoxBlock;
 import com.wildcard.buddycards.core.BuddycardSet;
+import com.wildcard.buddycards.gear.BuddycardsToolTier;
 import com.wildcard.buddycards.item.*;
 import com.wildcard.buddycards.registries.BuddycardsBlocks;
 import com.wildcard.buddycards.registries.BuddycardsComponents;
@@ -11,10 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
@@ -26,6 +24,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import vectorwing.farmersdelight.common.block.PieBlock;
+import vectorwing.farmersdelight.common.item.KnifeItem;
 
 public class RegistryHandler {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(DelightfulBuddycards.MOD_ID);
@@ -35,11 +34,15 @@ public class RegistryHandler {
         BOOSTER_BOX = BLOCKS.register("buddycard_booster_box_delightful", () -> new BuddycardBoosterBoxBlock(BuddycardsItems.DEFAULT_BUDDYCARD_REQUIREMENT, BuddycardsBlocks.BOOSTER_BOX_PROPERTIES));
 
         PACK = ITEMS.register("buddycard_pack_delightful", DelightfulBuddycardPackItem::new);
-        BINDER = ITEMS.register("buddycard_binder_delightful", () -> new BuddycardBinderItem(BuddycardsItems.DEFAULT_BINDER_PROPERTIES, DELIGHTFUL_SET, ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "textures/gui/buddycard_binder_delightful.png"), false));
-        LARGE_BINDER = ITEMS.register("large_buddycard_binder_delightful", () -> new BuddycardBinderItem(BuddycardsItems.DEFAULT_BINDER_PROPERTIES, DELIGHTFUL_SET, ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "textures/gui/large_buddycard_binder_delightful.png"), true));
+        BINDER = ITEMS.register("buddycard_binder_delightful", () -> new BuddycardBinderItem(BuddycardsItems.DEFAULT_BINDER_PROPERTIES.get(), DELIGHTFUL_SET, ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "textures/gui/buddycard_binder_delightful.png"), false));
+        LARGE_BINDER = ITEMS.register("large_buddycard_binder_delightful", () -> new BuddycardBinderItem(BuddycardsItems.DEFAULT_BINDER_PROPERTIES.get(), DELIGHTFUL_SET, ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "textures/gui/large_buddycard_binder_delightful.png"), true));
         MEDAL = ITEMS.register("buddysteel_medal_delightful", () -> new BuddysteelSetMedalItem(MedalTypes.DELIGHTFUL_SET, DELIGHTFUL_SET, new Item.Properties().stacksTo(1).component(BuddycardsComponents.COLLECTION_TIER, 0)));
 
         BOOSTER_BOX_ITEM = ITEMS.register("buddycard_booster_box_delightful", () -> new BuddycardBoosterBoxItem(BOOSTER_BOX.get(), PACK, BuddycardsItems.DEFAULT_UNCOMMON_PROPERTIES));
+
+        BUDDYSTEEL_KNIFE = ITEMS.register("buddysteel_knife", () -> new KnifeItem(BuddycardsToolTier.BUDDYSTEEL, new Item.Properties().stacksTo(1).attributes(KnifeItem.createAttributes(BuddycardsToolTier.BUDDYSTEEL, 0.5F, -2.0F))));
+        CHARGED_BUDDYSTEEL_KNIFE = ITEMS.register("charged_buddysteel_knife", () -> new CollectionTieredKnifeItem(BuddycardsItems.TIERED_BUDDYSTEEL_TOOL_TIERS,
+                new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON), null));
 
         DICED_BUDDYCARDS = ITEMS.register("diced_buddycards", () -> new Item(new Item.Properties()));
         BUDDYBEANS = BLOCKS.register("buddybeans", () -> new CropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POTATOES)));
@@ -75,6 +78,9 @@ public class RegistryHandler {
     public static DeferredItem<BuddysteelSetMedalItem> MEDAL;
 
     public static DeferredItem<BuddycardBoosterBoxItem> BOOSTER_BOX_ITEM;
+
+    public static DeferredItem<Item> BUDDYSTEEL_KNIFE;
+    public static DeferredItem<Item> CHARGED_BUDDYSTEEL_KNIFE;
 
     public static DeferredItem<Item> DICED_BUDDYCARDS;
     public static DeferredBlock<Block> BUDDYBEANS;

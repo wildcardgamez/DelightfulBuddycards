@@ -62,11 +62,11 @@ public class Datagen {
                 medal.override().predicate(ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "tier"), i).model(tierMedal);
             }
             ItemModelBuilder knife = getBuilder(ModelProvider.ITEM_FOLDER + "/charged_buddysteel_knife")
-                    .parent(factory.apply(ResourceLocation.withDefaultNamespace("item/generated")))
+                    .parent(factory.apply(ResourceLocation.withDefaultNamespace("item/handheld")))
                     .texture("layer0", ResourceLocation.fromNamespaceAndPath(DelightfulBuddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/charged_buddysteel_knife"));
             for (int i = 1; i < 5; i++) {
                 ItemModelBuilder tierKnife = getBuilder(ModelProvider.ITEM_FOLDER + "/charged_buddysteel_knife" + i)
-                        .parent(factory.apply(ResourceLocation.withDefaultNamespace("item/generated")))
+                        .parent(factory.apply(ResourceLocation.withDefaultNamespace("item/handheld")))
                         .texture("layer0", ResourceLocation.fromNamespaceAndPath(DelightfulBuddycards.MOD_ID, ModelProvider.ITEM_FOLDER + "/charged_buddysteel_knife" + i));
                 knife.override().predicate(ResourceLocation.fromNamespaceAndPath(Buddycards.MOD_ID, "tier"), i).model(tierKnife);
             }
